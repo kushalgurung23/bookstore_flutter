@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 class ReusablePills extends StatelessWidget {
   final String? title;
   final Icon? icon;
-  // ignore: use_key_in_widget_constructors
-  const ReusablePills({required this.icon, required this.title});
+
+  const ReusablePills({Key? key, required this.icon, required this.title}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
