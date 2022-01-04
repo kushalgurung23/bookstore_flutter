@@ -1,3 +1,3 @@
 # bookstore_flutter
 
-## Book store flutter project built with Provider package for state manegement.
+## Book store flutter project built with Provider package for state management.
