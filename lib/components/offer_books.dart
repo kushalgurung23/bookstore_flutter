@@ -26,8 +26,7 @@ class _OfferBooksState extends State<OfferBooks> {
                 children: const <Widget>[
                   Text(
                     "Grab These Offers",
-                    style:
-                    TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   Icon(
                     Icons.local_fire_department,
@@ -51,16 +50,20 @@ class _OfferBooksState extends State<OfferBooks> {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return ReusableOffersCard(
-                  bookName: offerCardList[index].bookDescription,
+                  onTap: () {
+                    Provider.of<HomeScreenProvider>(context, listen: false)
+                        .navigateToBookDetailScreen(
+                            context, offerCardList[index]);
+                  },
+                  bookName: offerCardList[index].bookName,
                   cost: "Rs. ${offerCardList[index].price}",
                   offerCost: offerCardList[index].offerPrice.toString(),
                   path: offerCardList[index].image,
                   isFavorite: offerCardList[index].isFavorite,
                   rating: offerCardList[index].rating,
-                  onTap: () {
+                  favoriteOnTap: () {
                     Provider.of<HomeScreenProvider>(context, listen: false)
-                        .changeFavoriteStatus(
-                        bookModel: offerCardList[index]);
+                        .changeFavoriteStatus(bookModel: offerCardList[index]);
                   },
                 );
               },

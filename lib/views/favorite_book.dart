@@ -37,7 +37,7 @@ class _FavoriteBookState extends State<FavoriteBook> {
                 onPress: () {
                   Navigator.pop(context);
                 },
-                color: const Color(0xFFFFFFFF))),
+                color: const Color(0xFFFFFFFF), listOfWidget: const [],)),
         backgroundColor: const Color(0xFFFFFFFF),
         body: const FavoriteBookBody(),
       ),

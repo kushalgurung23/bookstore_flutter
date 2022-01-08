@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fourth_bookstoreui/components/reusable_bestseller_list.dart';
 import 'package:fourth_bookstoreui/models/book_model.dart';
 import 'package:fourth_bookstoreui/providers/home_screen_provider.dart';
+import 'package:fourth_bookstoreui/views/book_detail.dart';
 import 'package:provider/provider.dart';
 
 class BestSellerBooks extends StatefulWidget {
@@ -41,12 +42,20 @@ class _BestSellerBooksState extends State<BestSellerBooks> {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return ReusableBestSellerList(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BookDetail(
+                                  bookModel: bookList[index],
+                                )));
+                  },
                   rating: bookList[index].rating,
-                  bookName: bookList[index].bookDescription,
+                  bookName: bookList[index].bookName,
                   cost: "Rs. ${bookList[index].price}",
                   path: bookList[index].image,
                   favorite: bookList[index].isFavorite,
-                  onTap: () {
+                  favoriteOnTap: () {
                     Provider.of<HomeScreenProvider>(context, listen: false)
                         .changeFavoriteStatus(bookModel: bookList[index]);
                   },

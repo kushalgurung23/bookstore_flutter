@@ -6,6 +6,7 @@ class CustomAppBar extends StatelessWidget {
   final Icon icon;
   final VoidCallback onPress;
   final Color color;
+  final List<Widget> listOfWidget;
 
   const CustomAppBar(
       {Key? key,
@@ -13,7 +14,8 @@ class CustomAppBar extends StatelessWidget {
       required this.textStyle,
       required this.icon,
       required this.onPress,
-      required this.color})
+      required this.color,
+      required this.listOfWidget})
       : super(key: key);
 
   @override
@@ -30,6 +32,7 @@ class CustomAppBar extends StatelessWidget {
         style: textStyle,
       ),
       centerTitle: true,
+      actions: listOfWidget,
     );
   }
 }

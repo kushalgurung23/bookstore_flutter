@@ -52,7 +52,7 @@ class FavoriteBookBody extends StatelessWidget {
                           top: 30,
                           left: 100,
                           child: Text(
-                              data.favoriteBookList[index].bookDescription,
+                              data.favoriteBookList[index].bookName,
                               style: const TextStyle(color: Colors.white)),
                         ),
                         Positioned(

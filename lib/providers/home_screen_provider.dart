@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fourth_bookstoreui/models/book_model.dart';
 import 'package:fourth_bookstoreui/models/profile_card_model.dart';
+import 'package:fourth_bookstoreui/views/book_detail.dart';
 
 class HomeScreenProvider extends ChangeNotifier {
   List<BookModel> _allBookList = [];
@@ -15,55 +16,118 @@ class HomeScreenProvider extends ChangeNotifier {
   void getBookList() {
     List<BookModel> bookList = [
       BookModel(
-          bookDescription: "I’ve never been ..",
-          image: 'Images/shaenn.png',
-          rating: 4.3,
-          price: 450,
-          isFavorite: false,
-          category: 'BS1',
-          offerPrice: 0),
+        bookName: "I’ve never been ..",
+        image: 'Images/shaenn.png',
+        rating: 4.3,
+        price: 450,
+        isFavorite: false,
+        category: 'BS1',
+        offerPrice: 0,
+        bookDescription:
+            'I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. ',
+        bookQuantity: 0,
+        isbnNumber: 7780241491523,
+        stockStatus: 'Out of Stock',
+        bookAuthor: 'Kushal Gurung',
+        bookGenre: [
+          {'GenreImage': 'Images/autobiography.png', 'Genre': 'Autobiography'},
+          {'GenreImage': 'Images/motivational.png', 'Genre': 'Motivational'}
+        ],
+      ),
       BookModel(
-          bookDescription: "A Promised Land",
-          image: 'Images/obama.png',
-          rating: 4.3,
-          price: 3198,
-          isFavorite: false,
-          category: 'BS1',
-          offerPrice: 0),
+        bookAuthor: 'Barack Obama',
+        bookName: "A Promised Land",
+        image: 'Images/obama.png',
+        rating: 4.3,
+        price: 3198,
+        isFavorite: false,
+        category: 'BS1',
+        offerPrice: 0,
+        bookQuantity: 9802,
+        isbnNumber: 9780241491515,
+        stockStatus: 'In Stock',
+        bookDescription:
+            'A riveting, deeply personal account of history in the making-from the president who inspired us to believe in the power of democracy. A riveting, deeply personal account of history in the making-from the president who inspired us to believe in the power of democracy.',
+        bookGenre: [
+          {'GenreImage': 'Images/autobiography.png', 'Genre': 'Autobiography'},
+          {'GenreImage': 'Images/motivational.png', 'Genre': 'Motivational'}
+        ],
+      ),
       BookModel(
-          bookDescription: "Jim Morrision",
-          image: 'Images/15324.png',
-          rating: 4.3,
-          price: 450,
-          isFavorite: false,
-          category: 'BS1',
-          offerPrice: 0),
+        bookAuthor: 'Jim Morrision',
+        bookName: "Jim Morrision",
+        image: 'Images/15324.png',
+        rating: 4.3,
+        price: 450,
+        isFavorite: false,
+        category: 'BS1',
+        offerPrice: 0,
+        bookDescription:
+            'This is the description of Jim Morrision. This is the description of Jim Morrision. This is the description of Jim Morrision. This is the description of Jim Morrision. This is the description of Jim Morrision. This is the description of Jim Morrision. This is the description of Jim Morrision. ',
+        bookQuantity: 76020,
+        isbnNumber: 1980241491520,
+        stockStatus: 'In Stock',
+        bookGenre: [
+          {'GenreImage': 'Images/autobiography.png', 'Genre': 'Autobiography'},
+          {'GenreImage': 'Images/motivational.png', 'Genre': 'Motivational'}
+        ],
+      ),
       BookModel(
-        bookDescription: "The Classical ...",
+        bookName: "The Classical ...",
         image: 'Images/8602.png',
         rating: 4.8,
         price: 450,
         offerPrice: 430,
         isFavorite: false,
         category: 'GTO2',
+        bookDescription:
+            'This is the description of the classical book. This is the description of the classical book. This is the description of the classical book. This is the description of the classical book. This is the description of the classical book. This is the description of the classical book. This is the description of the classical book. ',
+        bookQuantity: 120000,
+        isbnNumber: 6980241491575,
+        stockStatus: 'In Stock',
+        bookAuthor: 'Polar Beer',
+        bookGenre: [
+          {'GenreImage': 'Images/autobiography.png', 'Genre': 'Autobiography'},
+          {'GenreImage': 'Images/motivational.png', 'Genre': 'Motivational'}
+        ],
       ),
       BookModel(
-        bookDescription: "Feminism is .. ",
+        bookName: "Feminism is .. ",
         image: 'Images/8586.png',
         rating: 4.8,
         price: 750,
         offerPrice: 650,
         isFavorite: false,
         category: 'GTO2',
+        bookDescription:
+            'This is the description of the Feminism. This is the description of the Feminism. This is the description of the Feminism. This is the description of the Feminism. This is the description of the Feminism. This is the description of the Feminism. This is the description of the Feminism. This is the description of the Feminism.',
+        bookQuantity: 0,
+        isbnNumber: 8880241491574,
+        stockStatus: 'Out of Stock',
+        bookAuthor: 'Shakira Pique',
+        bookGenre: [
+          {'GenreImage': 'Images/autobiography.png', 'Genre': 'Autobiography'},
+          {'GenreImage': 'Images/motivational.png', 'Genre': 'Motivational'}
+        ],
       ),
       BookModel(
-        bookDescription: "The Alchimist",
+        bookName: "The Alchimist",
         image: 'Images/8586.png',
         rating: 4.8,
         price: 450,
         offerPrice: 350,
         isFavorite: false,
         category: 'GTO2',
+        bookDescription:
+            'This is the description of The Alchimist. This is the description of The Alchimist. This is the description of The Alchimist. This is the description of The Alchimist. This is the description of The Alchimist. This is the description of The Alchimist. This is the description of The Alchimist. This is the description of The Alchimist. ',
+        bookQuantity: 290,
+        isbnNumber: 9980241491546,
+        stockStatus: 'In Stock',
+        bookAuthor: 'Polar Beer',
+        bookGenre: [
+          {'GenreImage': 'Images/autobiography.png', 'Genre': 'Autobiography'},
+          {'GenreImage': 'Images/motivational.png', 'Genre': 'Motivational'}
+        ],
       ),
     ];
 
@@ -111,8 +175,8 @@ class HomeScreenProvider extends ChangeNotifier {
         favoriteList.add(data);
       }
     }
-    favoriteBookList.addAll(favoriteList.where((a) => favoriteBookList
-        .every((b) => (a.bookDescription != b.bookDescription))));
+    favoriteBookList.addAll(favoriteList.where(
+        (a) => favoriteBookList.every((b) => (a.bookName != b.bookName))));
   }
 
   List<ProfileCardModel> _profileCardList = [];
@@ -148,4 +212,16 @@ class HomeScreenProvider extends ChangeNotifier {
     ];
     _profileCardList = profileList;
   }
+
+  void navigateToBookDetailScreen(BuildContext context, BookModel bookModel) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => BookDetail(bookModel: bookModel)));
+  }
+
+  void navigateBack(BuildContext context) {
+    Navigator.pop(context);
+  }
+
 }

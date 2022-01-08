@@ -7,17 +7,18 @@ class ReusableOffersCard extends StatefulWidget {
   final String? offerCost;
   final String? path;
   final double rating;
-  final VoidCallback onTap;
+  final VoidCallback onTap, favoriteOnTap;
   final bool isFavorite;
 
   const ReusableOffersCard(
       {Key? key,
+      required this.onTap,
       required this.bookName,
       required this.cost,
       required this.offerCost,
       required this.path,
       required this.rating,
-      required this.onTap,
+      required this.favoriteOnTap,
       required this.isFavorite})
       : super(key: key);
 
@@ -30,30 +31,29 @@ class _ReusableOffersCardState extends State<ReusableOffersCard> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20),
-      child: IntrinsicHeight(
-        child: Row(
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width / 3 - 85,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(widget.path!),
-                      fit: BoxFit.fill,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: Container(
+          color: Colors.transparent,
+          child: Row(
+            children: <Widget>[
+              Stack(
+                children: <Widget>[
+                  Container(
+                    width: MediaQuery.of(context).size.width / 3 - 85,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(widget.path!),
+                        fit: BoxFit.fill,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                      color: Colors.indigo,
                     ),
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: Colors.indigo,
                   ),
-                ),
-              ],
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width / 3 - 38,
-              margin: const EdgeInsets.only(left: 8.0),
-              child: Column(
-                //mainAxisAlignment: MainAxisAlignment.end,
+                ],
+              ),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
@@ -96,34 +96,34 @@ class _ReusableOffersCardState extends State<ReusableOffersCard> {
                   ),
                 ],
               ),
-            ),
-            GestureDetector(
-              onTap: widget.onTap,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    widget.isFavorite == false
-                        ? const Icon(
-                            Icons.bookmark_outline,
-                            size: 18,
-                            color: Colors.black,
-                          )
-                        : const Icon(
-                            Icons.bookmark,
-                            size: 18,
-                            color: Colors.orangeAccent,
-                          ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "${widget.rating}",
-                      style: const TextStyle(
-                          fontSize: 12, fontWeight: FontWeight.w400),
-                    ),
-                  ]),
-            ),
-          ],
+              GestureDetector(
+                onTap: widget.favoriteOnTap,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      widget.isFavorite == false
+                          ? const Icon(
+                              Icons.bookmark_outline,
+                              size: 18,
+                              color: Colors.black,
+                            )
+                          : const Icon(
+                              Icons.bookmark,
+                              size: 18,
+                              color: Colors.orangeAccent,
+                            ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "${widget.rating}",
+                        style: const TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.w400),
+                      ),
+                    ]),
+              ),
+            ],
+          ),
         ),
       ),
     );
