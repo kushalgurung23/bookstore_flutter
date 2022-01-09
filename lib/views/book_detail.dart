@@ -6,9 +6,12 @@ import 'package:fourth_bookstoreui/components/constants.dart';
 import 'package:fourth_bookstoreui/components/custom_app_bar.dart';
 import 'package:fourth_bookstoreui/components/size_configuration.dart';
 import 'package:fourth_bookstoreui/models/book_model.dart';
+import 'package:fourth_bookstoreui/models/review_model.dart';
 import 'package:fourth_bookstoreui/providers/book_detail_screen_provider.dart';
+import 'package:fourth_bookstoreui/providers/home_screen_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
+import 'package:intl/intl.dart';
 
 class BookDetail extends StatefulWidget {
   static const String id = '/book_detail';
@@ -22,7 +25,6 @@ class BookDetail extends StatefulWidget {
 }
 
 class _BookDetailState extends State<BookDetail> {
-
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
@@ -43,12 +45,24 @@ class _BookDetailState extends State<BookDetail> {
             },
             color: const Color(0x00FFFFFF),
             listOfWidget: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.bookmark_outline,
-                  color: Colors.black,
-                ),
+              Consumer<HomeScreenProvider>(
+                builder: (context, data, child) {
+                  return IconButton(
+                    onPressed: () {
+                      Provider.of<HomeScreenProvider>(context, listen: false)
+                          .changeFavoriteStatus(bookModel: widget.bookModel!);
+                    },
+                    icon: widget.bookModel!.isFavorite == false
+                        ? const Icon(
+                            Icons.bookmark_outline,
+                            color: Colors.black,
+                          )
+                        : const Icon(
+                            Icons.bookmark,
+                            color: Colors.orangeAccent,
+                          ),
+                  );
+                },
               )
             ],
           ),
@@ -185,7 +199,7 @@ class _BookDetailState extends State<BookDetail> {
                           ),
                           Padding(
                             padding: EdgeInsets.only(
-                                left: SizeConfig.defaultSize * 5.6,
+                                left: SizeConfig.defaultSize * 5,
                                 top: SizeConfig.defaultSize * 1.2),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -203,11 +217,17 @@ class _BookDetailState extends State<BookDetail> {
                                       horizontal: SizeConfig.defaultSize * 2),
                                   child: Consumer<BookDetailScreenProvider>(
                                     builder: (context, data, child) {
-                                      return Text('${data.selectedBookNumber}',
-                                          style: const TextStyle(
-                                              fontSize: 16.0,
-                                              color: Color(0xFF000000),
-                                              fontFamily: 'MontserratMedium'));
+                                      return SizedBox(
+                                        child: Text(
+                                            data.selectedBookNumber
+                                                .toString()
+                                                .padLeft(2, "0"),
+                                            style: const TextStyle(
+                                                fontSize: 16.0,
+                                                color: Color(0xFF000000),
+                                                fontFamily:
+                                                    'MontserratMedium')),
+                                      );
                                     },
                                   ),
                                 ),
@@ -236,14 +256,12 @@ class _BookDetailState extends State<BookDetail> {
                   trimExpandedText: 'Show Less',
                   moreStyle: const TextStyle(
                       letterSpacing: 0.5,
-                      backgroundColor: Color(0xFFC4C4C4),
-                      color: Color(0xFFFFFFFF),
+                      color: Color(0xFF000000),
                       fontSize: 14,
                       fontFamily: 'MontserratMedium',
                       fontWeight: FontWeight.bold),
                   lessStyle: const TextStyle(
-                      backgroundColor: Color(0xFFC4C4C4),
-                      color: Color(0xFFFFFFFF),
+                      color: Color(0xFF000000),
                       fontSize: 14,
                       fontFamily: 'MontserratMedium',
                       fontWeight: FontWeight.bold),
@@ -264,7 +282,6 @@ class _BookDetailState extends State<BookDetail> {
                     itemCount: widget.bookModel!.bookGenre.length,
                     itemBuilder: (context, index) {
                       return Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
                             padding: EdgeInsets.only(
@@ -379,117 +396,127 @@ class _BookDetailState extends State<BookDetail> {
                 const SizedBox(
                   height: 10,
                 ),
-                ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 2,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Consumer<BookDetailScreenProvider>(
+                  builder: (context, data, child) {
+                    List<ReviewModel> reviewList = data.review;
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: reviewList.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Stack(
+                                  Row(
                                     children: [
-                                      const CircleAvatar(
-                                        backgroundImage:
-                                            AssetImage('Images/profile1.png'),
-                                      ),
-                                      Positioned(
-                                          right: 0,
-                                          bottom: 0,
-                                          child: SvgPicture.asset(
-                                              'Images/Award.svg'))
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        'Garth Stein',
-                                        style: TextStyle(
-                                          fontFamily: 'MontserratMedium',
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color(0xFF000000),
-                                        ),
-                                      ),
-                                      Row(
+                                      Stack(
                                         children: [
-                                          Row(
-                                            children: kRating,
+                                          CircleAvatar(
+                                            backgroundImage: AssetImage(
+                                                reviewList[index].userImage),
                                           ),
-                                          const SizedBox(
-                                            width: 7,
-                                          ),
-                                          const Text(
-                                            '4.3',
-                                            style: TextStyle(
+                                          Positioned(
+                                              right: 0,
+                                              bottom: 0,
+                                              child: SvgPicture.asset(
+                                                  'Images/Award.svg'))
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            reviewList[index].fullName,
+                                            style: const TextStyle(
                                               fontFamily: 'MontserratMedium',
-                                              fontSize: 12,
+                                              fontSize: 14,
                                               fontWeight: FontWeight.w400,
                                               color: Color(0xFF000000),
                                             ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Row(
+                                                children: kRating,
+                                              ),
+                                              const SizedBox(
+                                                width: 7,
+                                              ),
+                                              Text(
+                                                reviewList[index]
+                                                    .rating
+                                                    .toString(),
+                                                style: const TextStyle(
+                                                  fontFamily:
+                                                      'MontserratMedium',
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Color(0xFF000000),
+                                                ),
+                                              )
+                                            ],
                                           )
                                         ],
-                                      )
+                                      ),
                                     ],
+                                  ),
+                                  GestureDetector(
+                                    child: SvgPicture.asset('Images/More.svg'),
+                                    onTap: () {},
                                   ),
                                 ],
                               ),
-                              GestureDetector(
-                                child: SvgPicture.asset('Images/More.svg'),
-                                onTap: () {},
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10.0),
+                                child: ReadMoreText(
+                                  reviewList[index].review,
+                                  trimLines: 4,
+                                  textAlign: TextAlign.justify,
+                                  trimMode: TrimMode.Line,
+                                  trimCollapsedText: 'Show More',
+                                  trimExpandedText: 'Show Less',
+                                  moreStyle: const TextStyle(
+                                      letterSpacing: 0.5,
+                                      color: Color(0xFF000000),
+                                      fontSize: 12,
+                                      fontFamily: 'MontserratMedium',
+                                      fontWeight: FontWeight.bold),
+                                  lessStyle: const TextStyle(
+                                      color: Color(0xFF000000),
+                                      fontSize: 12,
+                                      fontFamily: 'MontserratMedium',
+                                      fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontSize: 13,
+                                      fontFamily: 'MontserratMedium',
+                                      height: 1.5),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 20.0),
+                                child: Text(
+                                    DateFormat("dd MMMM yyyy")
+                                        .format(reviewList[index].date),
+                                    style: const TextStyle(
+                                        fontSize: 13,
+                                        fontFamily: 'MontserratMedium',
+                                        height: 1.5,
+                                        color: Color(0xFF909195))),
                               ),
                             ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10.0),
-                            child: ReadMoreText(
-                              widget.bookDescription,
-                              trimLines: 4,
-                              textAlign: TextAlign.justify,
-                              trimMode: TrimMode.Line,
-                              trimCollapsedText: 'Show More',
-                              trimExpandedText: 'Show Less',
-                              moreStyle: const TextStyle(
-                                  letterSpacing: 0.5,
-                                  backgroundColor: Color(0xFFC4C4C4),
-                                  color: Color(0xFFFFFFFF),
-                                  fontSize: 12,
-                                  fontFamily: 'MontserratMedium',
-                                  fontWeight: FontWeight.bold),
-                              lessStyle: const TextStyle(
-                                  backgroundColor: Color(0xFFC4C4C4),
-                                  color: Color(0xFFFFFFFF),
-                                  fontSize: 12,
-                                  fontFamily: 'MontserratMedium',
-                                  fontWeight: FontWeight.bold),
-                              style: const TextStyle(
-                                  fontSize: 13,
-                                  fontFamily: 'MontserratMedium',
-                                  height: 1.5),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 20.0),
-                            child: Text('November 18, 2020',
-                                style: TextStyle(
-                                    fontSize: 13,
-                                    fontFamily: 'MontserratMedium',
-                                    height: 1.5,
-                                    color: Color(0xFF909195))),
-                          ),
-                        ],
-                      );
-                    }),
+                          );
+                        });
+                  },
+                ),
               ],
             ),
           ),

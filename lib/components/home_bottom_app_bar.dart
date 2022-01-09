@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fourth_bookstoreui/providers/home_screen_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeBottomAppBar extends StatelessWidget {
   const HomeBottomAppBar({Key? key}) : super(key: key);
@@ -37,9 +39,11 @@ class HomeBottomAppBar extends StatelessWidget {
                       iconSize: 30,
                     ),
                     IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.search_rounded,
-                          color: Colors.black87),
+                      onPressed: () {
+                        Provider.of<HomeScreenProvider>(context, listen: false)
+                            .navigateToFavoriteScreen(context);
+                      },
+                      icon: const Icon(Icons.favorite_border, color: Colors.black87),
                       iconSize: 30,
                     ),
                   ],

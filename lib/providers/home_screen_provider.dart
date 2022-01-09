@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fourth_bookstoreui/models/book_model.dart';
 import 'package:fourth_bookstoreui/models/profile_card_model.dart';
 import 'package:fourth_bookstoreui/views/book_detail.dart';
+import 'package:fourth_bookstoreui/views/favorite_book.dart';
+import 'package:fourth_bookstoreui/views/scan_book.dart';
 
 class HomeScreenProvider extends ChangeNotifier {
   List<BookModel> _allBookList = [];
@@ -24,7 +26,7 @@ class HomeScreenProvider extends ChangeNotifier {
         category: 'BS1',
         offerPrice: 0,
         bookDescription:
-            'I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. ',
+            'I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description. I\'ve never been description.',
         bookQuantity: 0,
         isbnNumber: 7780241491523,
         stockStatus: 'Out of Stock',
@@ -224,4 +226,11 @@ class HomeScreenProvider extends ChangeNotifier {
     Navigator.pop(context);
   }
 
+  void navigateToFavoriteScreen(BuildContext context) {
+    Navigator.pushNamed(context, FavoriteBook.id);
+  }
+
+  void navigateToQRScanScreen(BuildContext context) {
+    Navigator.pushNamed(context, ScanBook.id);
+  }
 }

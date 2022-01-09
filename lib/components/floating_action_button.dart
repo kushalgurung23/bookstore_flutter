@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fourth_bookstoreui/views/favorite_book.dart';
+import 'package:fourth_bookstoreui/providers/home_screen_provider.dart';
+import 'package:provider/provider.dart';
 
 class FloatingFavoriteButton extends StatelessWidget {
   const FloatingFavoriteButton({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class FloatingFavoriteButton extends StatelessWidget {
           height: 75,
           width: 75,
           child: const Icon(
-            Icons.favorite,
+            Icons.qr_code,
             size: 45,
           ),
           decoration: const BoxDecoration(
@@ -28,7 +29,7 @@ class FloatingFavoriteButton extends StatelessWidget {
                   colors: [Color(0xffffffff), Color(0xffff7f50)])),
         ),
         onPressed: () {
-          Navigator.pushNamed(context, FavoriteBook.id);
+          Provider.of<HomeScreenProvider>(context, listen: false).navigateToQRScanScreen(context);
         },
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
