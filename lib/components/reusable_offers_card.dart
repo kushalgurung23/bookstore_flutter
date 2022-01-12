@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fourth_bookstoreui/components/constants.dart';
+import 'package:fourth_bookstoreui/components/size_configuration.dart';
 
 class ReusableOffersCard extends StatefulWidget {
   final String? bookName;
@@ -29,6 +30,7 @@ class ReusableOffersCard extends StatefulWidget {
 class _ReusableOffersCardState extends State<ReusableOffersCard> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: GestureDetector(
@@ -40,8 +42,8 @@ class _ReusableOffersCardState extends State<ReusableOffersCard> {
               Stack(
                 children: <Widget>[
                   Container(
-                    width: MediaQuery.of(context).size.width / 3 - 85,
-                    height: 80,
+                    width: SizeConfig.defaultSize * 6,
+                    height: SizeConfig.defaultSize * 11,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(widget.path!),

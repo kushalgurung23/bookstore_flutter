@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fourth_bookstoreui/providers/book_detail_screen_provider.dart';
 import 'package:fourth_bookstoreui/providers/home_screen_provider.dart';
+import 'package:fourth_bookstoreui/providers/scan_book_provider.dart';
 import 'package:fourth_bookstoreui/views/book_detail.dart';
 import 'package:fourth_bookstoreui/views/favorite_book.dart';
 import 'package:fourth_bookstoreui/views/home_screen.dart';
@@ -11,6 +12,7 @@ void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => HomeScreenProvider()),
     ChangeNotifierProvider(create: (context) => BookDetailScreenProvider()),
+    ChangeNotifierProvider(create: (context) => ScanBookProvider()),
   ], child: const MyApp()));
 }
 

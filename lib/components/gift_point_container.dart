@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:fourth_bookstoreui/components/size_configuration.dart';
 
 class GiftPointContainer extends StatelessWidget {
   const GiftPointContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return Stack(
       children: <Widget>[
         Container(
           margin: const EdgeInsets.only(
               left: 15, right: 15, bottom: 15, top: 70),
           height: 105,
-          width: MediaQuery.of(context).size.width - 30,
+          width: MediaQuery.of(context).size.width - 60,
           decoration: const BoxDecoration(
             color: Color(0xFFDACAFB),
             borderRadius: BorderRadius.all(
@@ -21,9 +23,8 @@ class GiftPointContainer extends StatelessWidget {
         ),
         Positioned(
           bottom: 35,
-          right: 240,
+          right: 0,
           child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 35),
             height: 120,
             width: 120,
             decoration: const BoxDecoration(
@@ -36,7 +37,7 @@ class GiftPointContainer extends StatelessWidget {
         ),
         Positioned(
           bottom: 45,
-          right: 35,
+          left: 25,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +47,7 @@ class GiftPointContainer extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
-                "Lorem ipsum lorem dkdoa. Lorem \nipsum lorem dkdoa",
+                "Lorem ipsum lorem. \nipsum lorem dkdoa",
                 style: TextStyle(fontSize: 15),
               )
             ],

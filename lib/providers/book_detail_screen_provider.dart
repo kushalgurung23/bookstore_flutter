@@ -23,6 +23,11 @@ class BookDetailScreenProvider extends ChangeNotifier {
   // Initial Selected Value
   String dropDownValue = 'Top reviews';
 
+  void changeDropDownValue(String newValue) {
+    dropDownValue = newValue;
+    notifyListeners();
+  }
+
   // List of items in our dropdown menu
   var items = [
     'Top reviews',
