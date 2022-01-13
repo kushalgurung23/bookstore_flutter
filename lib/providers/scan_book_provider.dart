@@ -44,7 +44,7 @@ class ScanBookProvider extends ChangeNotifier {
 
   void toggleLight(BuildContext context) async {
     try {
-      await controller!.toggleFlash();
+      await controller?.toggleFlash();
     } on CameraException catch (e) {
       String? text = e.description;
       final snackBar = SnackBar(content: Text(text!));

@@ -42,10 +42,7 @@ class _ScanBookBodyState extends State<ScanBookBody> {
                 ),
                 child: GestureDetector(
                   onTap: () async {
-                    const String? url =
-                        "https://www.youtube.com/watch?v=isRaafOdGbE&list=RDcfyCAwPugOQ&index=13";
-
-                    //final String? url = data.barcode?.code.toString();
+                    final String? url = data.barcode?.code.toString();
                     data.openBrowserUrl(url: url, inApp: true, context: context);
                   },
                   child: Text(
@@ -118,4 +115,5 @@ class _ScanBookBodyState extends State<ScanBookBody> {
       },
     );
   }
+
 }

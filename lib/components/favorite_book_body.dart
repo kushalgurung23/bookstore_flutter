@@ -27,7 +27,6 @@ class FavoriteBookBody extends StatelessWidget {
                             gradient: LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                stops: [0.7, 0.1],
                                 colors: [Colors.blue, Color(0xFFDACAFB)]),
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
@@ -61,8 +60,8 @@ class FavoriteBookBody extends StatelessWidget {
                               "Rs. " +
                                   data.favoriteBookList[index].price.toString(),
                               style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400)),
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w800)),
                         ),
                         Positioned(
                           left: 100,

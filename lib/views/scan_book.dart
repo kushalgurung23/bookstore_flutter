@@ -37,9 +37,4 @@ class _ScanBookState extends State<ScanBook> {
     );
   }
 
-  @override
-  void dispose() {
-    Provider.of<ScanBookProvider>(context, listen: false).controller?.dispose();
-    super.dispose();
-  }
 }

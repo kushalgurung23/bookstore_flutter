@@ -12,13 +12,39 @@ class GiftPointContainer extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(
               left: 15, right: 15, bottom: 15, top: 70),
-          height: 105,
-          width: MediaQuery.of(context).size.width - 60,
+          height: SizeConfig.defaultSize * 12,
+          width: double.infinity,
           decoration: const BoxDecoration(
             color: Color(0xFFDACAFB),
             borderRadius: BorderRadius.all(
               Radius.circular(30),
             ),
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                width: SizeConfig.defaultSize * 26,
+                top: SizeConfig.defaultSize * 2,
+                left: SizeConfig.defaultSize * 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text(
+                      "Refer and win 50 Points! Grab the offer now!!",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    ),
+                    SizedBox(
+                      height: SizeConfig.defaultSize /2,
+                    ),
+                    const Text(
+                      "Lorem ipsum lorem. Lorem \nipsum lorem dkdoa",
+                      style: TextStyle(fontSize: 13),
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
         Positioned(
@@ -33,24 +59,6 @@ class GiftPointContainer extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-          ),
-        ),
-        Positioned(
-          bottom: 45,
-          left: 25,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
-                "Refer and win 50 Points!",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "Lorem ipsum lorem. \nipsum lorem dkdoa",
-                style: TextStyle(fontSize: 15),
-              )
-            ],
           ),
         ),
       ],
