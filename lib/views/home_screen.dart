@@ -30,10 +30,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingFavoriteButton(),
-      bottomNavigationBar: HomeBottomAppBar(),
-      body: HomeScreenBody()
-    );
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingFavoriteButton(),
+        bottomNavigationBar: HomeBottomAppBar(),
+        body: HomeScreenBody());
   }
 }

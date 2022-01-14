@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fourth_bookstoreui/components/reusable_profile_cards.dart';
+import 'package:fourth_bookstoreui/components/size_configuration.dart';
 import 'package:fourth_bookstoreui/models/profile_card_model.dart';
 import 'package:fourth_bookstoreui/providers/home_screen_provider.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,7 @@ class PopularAuthors extends StatelessWidget {
         Consumer<HomeScreenProvider>(builder: (context, data, child) {
           final List<ProfileCardModel> profileCardList = data.profileCardList;
           return SizedBox(
-            height: 110,
+            height: SizeConfig.defaultSize * 12,
             child: ListView.builder(
               itemCount: profileCardList.length,
               scrollDirection: Axis.horizontal,

@@ -36,7 +36,7 @@ class _OfferBooksState extends State<OfferBooks> {
               ),
               const Text(
                 "View all",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ],
           ),

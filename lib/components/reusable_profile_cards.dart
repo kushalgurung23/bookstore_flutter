@@ -36,7 +36,9 @@ class ReusableProfileCards extends StatelessWidget {
           ),
           Text(
             authorName!,
-            style: TextStyle(fontSize: SizeConfig.defaultSize * 1.5, fontWeight: FontWeight.w400),
+            style: TextStyle(
+                fontSize: SizeConfig.defaultSize * 1.5,
+                fontWeight: FontWeight.w400),
           ),
         ],
       ),
