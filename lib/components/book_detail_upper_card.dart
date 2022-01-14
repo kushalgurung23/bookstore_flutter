@@ -23,7 +23,7 @@ class _BookDetailUpperCardState extends State<BookDetailUpperCard> {
       children: [
         Container(
           width: double.infinity,
-          height: SizeConfig.defaultSize * 23.5,
+          height: SizeConfig.defaultSize * 24,
           margin: const EdgeInsets.only(top: 45, bottom: 20),
           decoration: const BoxDecoration(
             color: Color(0x6FC4C4C4),
@@ -38,7 +38,11 @@ class _BookDetailUpperCardState extends State<BookDetailUpperCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('ISBN: ${widget.bookModel!.isbnNumber}',
-                        style: kMedium13TextStyle),
+                        style: TextStyle(
+                            fontSize: SizeConfig.defaultSize * 1.4,
+                            color: const Color(0xFF909195),
+                            fontFamily: 'MontserratMedium',
+                            letterSpacing: 0.5)),
                     Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: SizeConfig.defaultSize * 1.5),
@@ -51,9 +55,9 @@ class _BookDetailUpperCardState extends State<BookDetailUpperCard> {
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
                             child: Text(widget.bookModel!.rating.toString(),
-                                style: const TextStyle(
-                                    fontSize: 14.0,
-                                    color: Color(0xFF000000),
+                                style: TextStyle(
+                                    fontSize: SizeConfig.defaultSize * 1.5,
+                                    color: const Color(0xFF000000),
                                     fontFamily: 'MontserratMedium',
                                     letterSpacing: 1)),
                           )
@@ -61,9 +65,9 @@ class _BookDetailUpperCardState extends State<BookDetailUpperCard> {
                       ),
                     ),
                     Container(
-                      height: 23,
+                      height: SizeConfig.defaultSize * 2.4,
                       width:
-                          widget.bookModel!.stockStatus == 'In Stock' ? 69 : 90,
+                          widget.bookModel!.stockStatus == 'In Stock' ? SizeConfig.defaultSize * 7 : SizeConfig.defaultSize * 10,
                       decoration: BoxDecoration(
                           color: widget.bookModel!.stockStatus == 'In Stock'
                               ? const Color(0xFF2FD114)
@@ -72,7 +76,11 @@ class _BookDetailUpperCardState extends State<BookDetailUpperCard> {
                               const BorderRadius.all(Radius.circular(5))),
                       child: Center(
                         child: Text(widget.bookModel!.stockStatus,
-                            style: kMedium12TextStyle),
+                            style: TextStyle(
+                                letterSpacing: 0.5,
+                                fontSize: SizeConfig.defaultSize * 1.3,
+                                color: Colors.white,
+                                fontFamily: 'MontserratMedium')),
                       ),
                     ),
                     Padding(
@@ -81,18 +89,18 @@ class _BookDetailUpperCardState extends State<BookDetailUpperCard> {
                           bottom: SizeConfig.defaultSize * 1.2),
                       child: Text(
                           'Rs. ${widget.bookModel!.offerPrice == 0 ? widget.bookModel!.price : widget.bookModel!.offerPrice}',
-                          style: const TextStyle(
+                          style: TextStyle(
                               letterSpacing: 0.5,
-                              fontSize: 18.0,
+                              fontSize: SizeConfig.defaultSize * 2,
                               color: Colors.black,
                               fontFamily: 'MontserratBold')),
                     ),
                     GestureDetector(
                       onTap: () {},
-                      child: const Text('See all details',
+                      child: Text('See all details',
                           style: TextStyle(
-                              fontSize: 14.0,
-                              color: Color(0xFF909195),
+                              fontSize: SizeConfig.defaultSize * 1.6,
+                              color: const Color(0xFF909195),
                               fontFamily: 'MontserratMedium',
                               decoration: TextDecoration.underline)),
                     ),
@@ -120,9 +128,9 @@ class _BookDetailUpperCardState extends State<BookDetailUpperCard> {
                                       data.selectedBookNumber
                                           .toString()
                                           .padLeft(2, "0"),
-                                      style: const TextStyle(
-                                          fontSize: 16.0,
-                                          color: Color(0xFF000000),
+                                      style: TextStyle(
+                                          fontSize: SizeConfig.defaultSize * 1.8,
+                                          color: const Color(0xFF000000),
                                           fontFamily: 'MontserratMedium')),
                                 );
                               },
@@ -162,16 +170,20 @@ class _BookDetailUpperCardState extends State<BookDetailUpperCard> {
               Padding(
                 padding: const EdgeInsets.only(top: 15.0),
                 child: Text(widget.bookModel!.bookName,
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 16.0,
+                        fontSize: SizeConfig.defaultSize * 1.7,
                         color: Colors.black,
                         fontFamily: 'MontserratMedium')),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: Text('by ${widget.bookModel!.bookAuthor}',
-                    style: kMedium13TextStyle),
+                    style: TextStyle(
+                        fontSize: SizeConfig.defaultSize * 1.4,
+                        color: const Color(0xFF909195),
+                        fontFamily: 'MontserratMedium',
+                        letterSpacing: 0.5)),
               ),
             ],
           ),

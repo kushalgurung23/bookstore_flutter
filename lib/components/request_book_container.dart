@@ -22,16 +22,16 @@ class RequestBookContainer extends StatelessWidget {
               Positioned(
                   right: SizeConfig.defaultSize * 9.5,
                   top: SizeConfig.defaultSize * 3.5,
-                  child: const Text(
+                  child: Text(
                     "Didn’t find the book?",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: SizeConfig.defaultSize * 1.8, fontWeight: FontWeight.w600),
                   )),
               Positioned(
                   right: SizeConfig.defaultSize * 5,
                   top: SizeConfig.defaultSize * 6.5,
-                  child: const Text(
+                  child: Text(
                     "Request us and we will get back to you.",
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: SizeConfig.defaultSize * 1.5, fontWeight: FontWeight.w600),
                   )),
             ],
           ),
@@ -46,8 +46,8 @@ class RequestBookContainer extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            height: 120,
-            width: 140,
+            height: SizeConfig.defaultSize * 13,
+            width: SizeConfig.defaultSize * 15,
           ),
         ),
       ],

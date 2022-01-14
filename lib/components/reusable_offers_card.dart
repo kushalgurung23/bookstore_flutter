@@ -32,28 +32,27 @@ class _ReusableOffersCardState extends State<ReusableOffersCard> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Padding(
-      padding: const EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.only(left: 20, right: 10),
       child: GestureDetector(
         onTap: widget.onTap,
         child: Container(
           color: Colors.transparent,
           child: Row(
             children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: SizeConfig.defaultSize * 6,
-                    height: SizeConfig.defaultSize * 11,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(widget.path!),
-                        fit: BoxFit.fill,
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(12)),
-                      color: Colors.indigo,
-                    ),
+              Container(
+                width: SizeConfig.defaultSize * 6,
+                height: SizeConfig.defaultSize * 11,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(widget.path!),
+                    fit: BoxFit.fill,
                   ),
-                ],
+                  borderRadius: const BorderRadius.all(Radius.circular(12)),
+                  color: Colors.indigo,
+                ),
+              ),
+              SizedBox(
+                width: SizeConfig.defaultSize,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

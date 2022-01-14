@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fourth_bookstoreui/components/size_configuration.dart';
 
 List<Widget> kRating = [
   const Icon(
@@ -29,40 +30,39 @@ List<Widget> kRating = [
 ];
 
 List<Widget> kBigRating = [
-  const Icon(
+  Icon(
     Icons.star_rate_rounded,
-    size: 21,
-    color: Color(0xFFEEC800),
+    size: SizeConfig.defaultSize * 2.2,
+    color: const Color(0xFFEEC800),
   ),
-  const Icon(
+  Icon(
     Icons.star_rate_rounded,
-    size: 21,
-    color: Color(0xFFEEC800),
+    size: SizeConfig.defaultSize * 2.2,
+    color: const Color(0xFFEEC800),
   ),
-  const Icon(
+  Icon(
     Icons.star_rate_rounded,
-    size: 21,
-    color: Color(0xFFEEC800),
+    size: SizeConfig.defaultSize * 2.2,
+    color: const Color(0xFFEEC800),
   ),
-  const Icon(
+  Icon(
     Icons.star_half_rounded,
-    size: 21,
-    color: Color(0xFFEEC800),
+    size: SizeConfig.defaultSize * 2.2,
+    color: const Color(0xFFEEC800),
   ),
-  const Icon(
+  Icon(
     Icons.star_outline_rounded,
-    size: 21,
-    color: Color(0xFFEEC800),
+    size: SizeConfig.defaultSize * 2.2,
+    color: const Color(0xFFEEC800),
   ),
 ];
 
 const kDescriptionReadMoreTextStyle = TextStyle(
-letterSpacing: 0.5,
-color: Color(0xFF000000),
-fontSize: 14,
-fontFamily: 'MontserratMedium',
-fontWeight: FontWeight.bold);
-
+    letterSpacing: 0.5,
+    color: Color(0xFF000000),
+    fontSize: 14,
+    fontFamily: 'MontserratMedium',
+    fontWeight: FontWeight.bold);
 
 const kReviewReadMoreTextStyle = TextStyle(
     letterSpacing: 0.5,
@@ -71,10 +71,8 @@ const kReviewReadMoreTextStyle = TextStyle(
     fontFamily: 'MontserratMedium',
     fontWeight: FontWeight.bold);
 
-const kReviewTextStyle = TextStyle(
-    fontSize: 13,
-    fontFamily: 'MontserratMedium',
-    height: 1.5);
+const kReviewTextStyle =
+    TextStyle(fontSize: 13, fontFamily: 'MontserratMedium', height: 1.5);
 
 const kMedium13TextStyle = TextStyle(
     fontSize: 13.0,

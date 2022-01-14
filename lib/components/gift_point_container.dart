@@ -12,20 +12,20 @@ class GiftPointContainer extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(
               left: 15, right: 15, bottom: 15, top: 70),
-          height: SizeConfig.defaultSize * 12,
+          height: SizeConfig.defaultSize * 12.5,
           width: double.infinity,
           decoration: const BoxDecoration(
             color: Color(0xFFDACAFB),
             borderRadius: BorderRadius.all(
-              Radius.circular(30),
+              Radius.circular(20),
             ),
           ),
           child: Stack(
             children: [
               Positioned(
-                width: SizeConfig.defaultSize * 26,
+                width: SizeConfig.defaultSize * 25.5,
                 top: SizeConfig.defaultSize * 2,
-                left: SizeConfig.defaultSize * 2,
+                left: SizeConfig.defaultSize * 2.3,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -51,8 +51,8 @@ class GiftPointContainer extends StatelessWidget {
           bottom: 35,
           right: 0,
           child: Container(
-            height: 120,
-            width: 120,
+            height: SizeConfig.defaultSize * 13,
+            width: SizeConfig.defaultSize * 13,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('Images/gift_front.png'),

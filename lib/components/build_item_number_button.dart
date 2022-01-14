@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fourth_bookstoreui/components/size_configuration.dart';
 
 class BuildItemNumberButton extends StatelessWidget {
   final IconData iconData;
@@ -11,8 +12,8 @@ class BuildItemNumberButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 27,
-      width: 26,
+      height: SizeConfig.defaultSize * 2.9,
+      width: SizeConfig.defaultSize * 2.8,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
             side: const BorderSide(color: Color(0xFF000000)),
@@ -24,6 +25,7 @@ class BuildItemNumberButton extends StatelessWidget {
         child: Icon(
           iconData,
           color: const Color(0xFF000000),
+          size: SizeConfig.defaultSize * 2,
         ),
       ),
     );
